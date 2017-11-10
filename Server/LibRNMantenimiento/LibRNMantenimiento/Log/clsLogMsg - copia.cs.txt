@@ -1,0 +1,68 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using LibRNMantenimiento.Transacciones;
+
+namespace LibRNMantenimiento.Log
+{
+    public class clsLogMsg
+    {
+        #region Atributos
+        
+
+
+        #endregion
+
+        #region Metodos Publicos
+
+        public void MostrarVlrsEntCab(clsTrnPedido objTrnPed)
+        {
+            Console.WriteLine("VALORES DE CABECERA RECIBIDOS....");
+            Console.WriteLine("Fecha Orden: {0}", objTrnPed.gsFecOrd);
+            Console.WriteLine("Cliente: {0}", objTrnPed.gsCodCli);
+            Console.WriteLine("Tecnico: {0}", objTrnPed.gsCodTec);
+            Console.WriteLine("Valor: {0}", objTrnPed.gsVlr);
+            Console.WriteLine("Iva: {0}", objTrnPed.gsIva);
+            Console.WriteLine("\r\n");
+        }
+
+        public void MostrarVlrsEntDet(clsTrnPedido objTrnPed)
+        {
+            Console.WriteLine("VALORES DE DETALLE RECIBIDOS....");
+
+            for (int i = 0; i < objTrnPed.gsDtDetalle.Rows.Count; i++)
+            {
+                for (int j = 0; j < objTrnPed.gsDtDetalle.Columns.Count; j++)
+                {
+                    Console.WriteLine(objTrnPed.gsDtDetalle.Rows[i][j].ToString() + "\\t");
+                }
+
+                Console.WriteLine("\r\n");
+            }
+
+            Console.WriteLine("\r\n");
+        }
+
+        public void MostrarVlrSal(object objValor)
+        {
+            Console.WriteLine("VALOR RETORNADO: {0}", objValor.ToString());
+            Console.WriteLine("\r\n");
+        }
+
+        public void MostrarVlrSal(object objValor, string strMsj)
+        {
+            Console.WriteLine(strMsj + " {0}", objValor.ToString());
+            Console.WriteLine("\r\n");
+        }
+
+        public void MostrarVlrSal(string strMsj)
+        {
+            Console.WriteLine(strMsj);
+            Console.WriteLine("\r\n");
+        }
+
+        #endregion
+    }
+}
